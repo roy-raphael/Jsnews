@@ -3,16 +3,18 @@
  */
 
 class Article {
+    id = -1;
     title = "";
     publicationDate = "";
     image = "";
     content = "";
 
-    constructor(article) {
-        this.title = article.title;
-        this.publicationDate = article.publicationDate;
-        this.image = article.image;
-        this.content = article.content;
+    constructor(articleJson) {
+        this.id = articleJson.id;
+        this.title = articleJson.title;
+        this.publicationDate = articleJson.publicationDate;
+        this.image = articleJson.image;
+        this.content = articleJson.content;
     }
 
     formatDate() {
