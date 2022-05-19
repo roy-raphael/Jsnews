@@ -3,19 +3,19 @@
  */
 
 class ArticleManager {
-    articlesList;
+    articlesList = [];
 
     constructor(articlesListJson) {
-        for (let articleJson in articlesListJson)
+        for (let articleJson of articlesListJson)
         {
-            articlesList.push(new Article(articleJson));
+            this.articlesList.push(new Article(articleJson));
         }
-        sortArticlesRecentFirst();
+        this.sortArticlesRecentFirst();
     }
 
     sortArticlesRecentFirst() {
         return this.articlesList.sort(function(a, b) {
-            return (Date.parse(a.publicationDate) < Date.parse(b.publicationDate)) ? 1 : -1;
+            return (Date.parse(a.publicationDate) > Date.parse(b.publicationDate)) ? 1 : -1;
         });
     }
 }

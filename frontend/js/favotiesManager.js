@@ -3,19 +3,18 @@
  */
 
 // ajouter un favori
-function addBookmark(article) {
+function addBookmark(articleID) {
     let bookmarksList = getBookmarks();
-    bookmarksList.push(article.id);
+    bookmarksList.push(articleID);
     saveBookmarks(bookmarksList);
 }
 
 // supprimer un favori
-function removeBookmark(article) {
+function removeBookmark(articleID) {
     let bookmarksList = getBookmarks();
-    var index = arr.indexOf(article.id);
-    if (index > -1) {
-        bookmarksList.splice(index, 1);
-    }
+    bookmarksList = bookmarksList.filter(function(bookmarkItem) {
+        bookmarkItem.id != articleID;
+    });
     saveBookmarks(bookmarksList);
 }
 
