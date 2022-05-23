@@ -75,18 +75,23 @@ function displayArticlesList(articlesListJson) {
     }
 }
 
-function listenStarButtonsClicks() {
-    let bookmarksButtons = document.getElementsByClassName("addFavorite");
-    for (let bookmarksButton of bookmarksButtons) {
+function listenStarButtonsClicks(removeHTML = false) {
+    for (let bookmarksButton of document.getElementsByClassName("addFavorite")) {
         bookmarksButton.addEventListener('click', function(event) {
             if (! this.classList.contains("activated")) {
+                // Add to favorites
                 this.classList.add("activated");
                 addBookmark(this.dataset.id);
                 bookmarksButton.style.color = "yellow";
             } else {
+                // Remove from favorites
                 this.classList.remove("activated");
                 removeBookmark(this.dataset.id);
                 bookmarksButton.style.color = "inherit";
+                if (removeHTML) {
+                    let articleHTML = bookmarksButton.parentElement.parentElement;
+                    articleHTML.parentElement.removeChild(articleHTML);
+                }
             }        
         });
     }

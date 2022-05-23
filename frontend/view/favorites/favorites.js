@@ -19,7 +19,7 @@ async function getFavoritesArticles() {
 async function displayFavoritesArticles() {
     let articlesListJson = await getFavoritesArticles();
     displayArticlesList(articlesListJson);
-    listenStarButtonsClicks();
+    listenStarButtonsClicks(true);
 }
 
 displayFavoritesArticles();
