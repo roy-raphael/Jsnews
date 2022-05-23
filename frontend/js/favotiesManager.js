@@ -68,6 +68,9 @@ function displayArticlesList(articlesListJson) {
                                         <p class="card-text">${article.content}</p>
                                     </div>
                                 </div>`;
+        if (activated == " activated") {
+            articleHTML.getElementsByClassName("addFavorite")[0].style.color = "yellow";
+        }
         container.appendChild(articleHTML);
     }
 }
@@ -79,9 +82,11 @@ function listenStarButtonsClicks() {
             if (! this.classList.contains("activated")) {
                 this.classList.add("activated");
                 addBookmark(this.dataset.id);
+                bookmarksButton.style.color = "yellow";
             } else {
                 this.classList.remove("activated");
                 removeBookmark(this.dataset.id);
+                bookmarksButton.style.color = "inherit";
             }        
         });
     }
